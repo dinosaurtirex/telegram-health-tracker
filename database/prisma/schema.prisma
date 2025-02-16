@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Chat {
+  id       Int      @id @default(autoincrement()) @unique
+  chat_id  Int
+  added_at DateTime @default(now())
+
+  reports Report[]
+}
+
+model Report {
+  id       Int      @id @default(autoincrement()) @unique
+  chat_id  Int      @unique
+  chat     Chat     @relation(fields: [chat_id], references: [id])
+  added_at DateTime @default(now())
+
+  headache_reports     HeadacheReport[]
+  mental_state_reports MentalStateReport[]
+  other_state_reports  OtherStateReport[]
+}
+
+model HeadacheReport {
+  id        Int      @id @default(autoincrement()) @unique
+  status    String
+  report_id Int
+  report    Report   @relation(fields: [report_id], references: [id])
+  added_at  DateTime @default(now())
+}
+
+model MentalStateReport {
+  id        Int      @id @default(autoincrement()) @unique
+  status    String
+  report_id Int
+  report    Report   @relation(fields: [report_id], references: [id])
+  added_at  DateTime @default(now())
+}
+
+model OtherStateReport {
+  id        Int      @id @default(autoincrement()) @unique
+  status    String
+  report_id Int
+  report    Report   @relation(fields: [report_id], references: [id])
+  added_at  DateTime @default(now())
+}

@@ -1,6 +1,7 @@
 import {CallbackQueryContext, CommandContext, Context} from "grammy";
 import { InlineKeyboard } from "grammy";
 import {CALLBACKS_REPORT_KEYS, HEADACHE_KEYS} from "../data/callbacks";
+import {createHeadacheReport, getOrCreateChat, getOrCreateReport} from "../../database/services/report.service";
 
 
 export async function reportService(ctx: CommandContext<Context>) {
@@ -29,5 +30,8 @@ export async function HeadacheCallbackQuery(ctx: CallbackQueryContext<Context>) 
 
 export async function HeadacheCallbackWrite(ctx: CallbackQueryContext<Context>, degree: string) {
     await ctx.answerCallbackQuery();
+    const currentChat = await getOrCreateChat(ctx.chatId);
+    const currentReport = await getOrCreateReport(currentChat.id);
+    await createHeadacheReport(currentReport, degree);
     console.log("Write headache: " + degree);
 }

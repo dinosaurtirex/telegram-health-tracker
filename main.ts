@@ -1,4 +1,4 @@
-import telegramMainBot from "./bot/source/bot";
+import telegramMainBot from "./bot/bot";
 
 async function main(): Promise<void> {
     await telegramMainBot.start();

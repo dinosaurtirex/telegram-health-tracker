@@ -1,8 +1,8 @@
 import { Bot } from "grammy";
-import {getEnv} from "../../utils/getEnv";
-import {startService} from "./services/start_service";
-import {HeadacheCallbackWrite, reportService} from "./services/report_service";
-import {HeadacheCallbackQuery} from "./services/report_service";
+import {getEnv} from "../utils/getEnv";
+import {startService} from "./services/start.service";
+import {HeadacheCallbackWrite, reportService} from "./services/report.service";
+import {HeadacheCallbackQuery} from "./services/report.service";
 import {CALLBACKS_REPORT_KEYS, HEADACHE_KEYS} from "./data/callbacks";
 
 const telegramMainBot = new Bot(getEnv().TG_BOT_TOKEN);

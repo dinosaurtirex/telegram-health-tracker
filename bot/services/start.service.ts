@@ -1,6 +1,8 @@
 import { CommandContext, Context } from "grammy";
+import {getOrCreateChat} from "../../database/services/report.service";
 
 export async function startService(ctx: CommandContext<Context>) {
+    await getOrCreateChat(ctx.chatId);
     await ctx.reply(
         "Добро пожаловать!\n\n" +
         "Что умеет этот бот?\n\n" +
