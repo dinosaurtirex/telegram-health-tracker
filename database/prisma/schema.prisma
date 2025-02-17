@@ -23,7 +23,7 @@ model Chat {
 
 model Report {
   id       Int      @id @default(autoincrement()) @unique
-  chat_id  Int      @unique
+  chat_id  Int
   chat     Chat     @relation(fields: [chat_id], references: [id])
   added_at DateTime @default(now())
 

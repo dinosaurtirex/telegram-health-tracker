@@ -39,6 +39,27 @@ export async function createHeadacheReport(report: Report, status: string): Prom
     });
 }
 
+export async function createMentalStateReport(report: Report, status: string): Promise<HeadacheReport> {
+    const database = getPrismaInstance();
+    return database.mentalStateReport.create({
+        data: {
+            report_id: report.id,
+            status,
+        },
+    });
+}
+
+export async function createOtherStateReport(report: Report, status: string): Promise<HeadacheReport> {
+    const database = getPrismaInstance();
+    return database.otherStateReport.create({
+        data: {
+            report_id: report.id,
+            status,
+        },
+    });
+}
+
+
 export async function getOrCreateChat(chatId: number): Promise<Chat> {
     const database = getPrismaInstance();
 
