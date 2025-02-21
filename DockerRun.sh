@@ -1,3 +1,6 @@
+npm i
+cd ./database/prisma; npx prisma generate; cd ../..
+
 docker build -t healthcare-bot .
 
 docker rm hbot
