@@ -14,6 +14,17 @@
 - Удобный выбор категорий
 - Автоматические напоминания
 
+#### 🚀 Запуск:
+
+Установите Docker, Node.JS на unix подобную систему, затем запустите команду
+
+
+```
+bash DockerRun.sh
+```
+
+
+
 Бот работает быстро и эффективно благодаря **Bun** и **SQLite**, а **Prisma** обеспечивает удобную работу с базой данных.
 
 # 🇺🇸
@@ -31,5 +42,14 @@ This Telegram bot is designed for tracking health status. It allows users to log
 - Logging and storing health data
 - Convenient category selection
 - Automatic reminders
+
+#### 🚀 Launch:
+
+Install Docker, Node.JS on your unix system, then simply run this command
+
+```
+bash DockerRun.sh
+```
+
 
 The bot operates quickly and efficiently thanks to **Bun** and **SQLite**, while **Prisma** ensures smooth database interaction.
