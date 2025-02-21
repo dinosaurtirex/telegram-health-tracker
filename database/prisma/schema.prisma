@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
@@ -18,6 +19,7 @@ model Chat {
   chat_id  Int
   added_at DateTime @default(now())
 
+  notifications     TelegramNotification[]
   reports Report[]
 }
 
@@ -54,4 +56,12 @@ model OtherStateReport {
   report_id Int
   report    Report   @relation(fields: [report_id], references: [id])
   added_at  DateTime @default(now())
+}
+
+
+model TelegramNotification {
+  id       Int      @id @default(autoincrement())
+  chat_id   Int
+  sent_at   DateTime @default(now())
+  chat     Chat     @relation(fields: [chat_id], references: [id])
 }

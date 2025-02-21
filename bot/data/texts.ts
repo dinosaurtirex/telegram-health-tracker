@@ -1,5 +1,10 @@
 import { CALLBACKS_REPORT_KEYS, HEADACHE_KEYS, MENTAL_STATE_KEYS } from "./keys";
 
+export const everydayNotification =
+    "Уведомление!\n\n" +
+    "Вы не заполнили ваше актуальное состояние, необходимо это сделать\n\n" +
+    "Чтобы внести данные, используйте команду /report";
+
 export const startServiceMessageText =
     "Добро пожаловать!\n\n" +
     "Этот бот поможет вам отслеживать состояния здоровья, такие как:\n\n" +

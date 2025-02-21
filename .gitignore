@@ -4,3 +4,6 @@ tsconfig.tsbuildinfo
 .idea
 .env
 /database/prisma/migrations/
+package-lock.json
+tsconfig.tsbuildinfo
+database/.env
