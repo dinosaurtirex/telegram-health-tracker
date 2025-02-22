@@ -1,7 +1,8 @@
-npm i
-cd ./database/prisma; npx prisma generate; cd ../..
+cd ./database/prisma; npx prisma migrate deploy; cd ../../;
 
 docker build -t healthcare-bot .
 
-docker rm hbot
-docker run -d --name hbot -v ./database:/app/database healthcare-bot
+docker stop hbot 2>/dev/null || true
+docker rm hbot 2>/dev/null || true
+
+docker run -d --name hbot healthcare-bot

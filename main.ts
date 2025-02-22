@@ -1,6 +1,4 @@
 import telegramMainBot from "./bot/bot";
-import {sendNotifications} from "./cron/notify";
-import getPrismaInstance from "./database/sqlite";
 import {sleep} from "./utils/sleep";
 
 async function main(): Promise<void> {

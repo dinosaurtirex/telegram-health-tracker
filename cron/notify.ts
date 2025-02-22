@@ -3,7 +3,7 @@ import {Prisma, PrismaClient} from "@prisma/client";
 import {DefaultArgs} from "@prisma/client/runtime/client";
 import {everydayNotification} from "../bot/data/texts";
 import telegramMainBot from "../bot/bot";
-import getPrismaInstance from "../database/sqlite";
+import getPrismaInstance from "../database/postgres";
 import schedule from 'node-schedule';
 
 

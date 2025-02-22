@@ -1,5 +1,5 @@
 import {Chat, HeadacheReport, Report} from "@prisma/client";
-import getPrismaInstance from "../sqlite";
+import getPrismaInstance from "../postgres";
 
 
 export async function getOrCreateReport(chatId: number): Promise<Report> {
