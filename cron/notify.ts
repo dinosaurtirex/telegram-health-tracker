@@ -15,6 +15,10 @@ export async function sendNotifications(bot: Bot<Context, Api<RawApi>>, database
 
     for (const chat of chats) {
 
+        const sixHours = 6 * 60 * 60 * 1000
+        const chatCreationDate = new Date(chat.added_at).getTime()
+        const isNewUser = chatCreationDate + sixHours <= chatCreationDate;
+
         const notificationExists = await database.telegramNotification.findFirst({
             where: {
                 chat_id: chat.id,
@@ -38,7 +42,7 @@ export async function sendNotifications(bot: Bot<Context, Api<RawApi>>, database
             }
         })
 
-        if (!notificationExists && !reportExists) {
+        if (!notificationExists && !reportExists && !isNewUser) {
             try {
                 await bot.api.sendMessage(chat.chat_id, everydayNotification);
                 await database.telegramNotification.create({
