@@ -4,7 +4,6 @@ import getPrismaInstance from "./database/sqlite";
 import {sleep} from "./utils/sleep";
 
 async function main(): Promise<void> {
-    await sendNotifications(telegramMainBot, getPrismaInstance())
     try {
         await telegramMainBot.start();
     } catch (error) {

@@ -19,4 +19,4 @@ RUN if [ ! -f /app/database/data.sqlite ]; then bun prisma migrate deploy --sche
 RUN cd /app/database/prisma && bun prisma migrate deploy --schema=/app/database/prisma/schema.prisma
 
 # Запуск основного бота и крона параллельно
-CMD ["sh", "-c", "bun ./main.ts & (bun ./cron/notify.ts)"]
+CMD ["sh", "-c", "bun ./main.ts & bun ./cron/notify.ts"]
