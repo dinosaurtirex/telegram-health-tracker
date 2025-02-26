@@ -59,6 +59,8 @@ export async function sendNotifications(bot: Bot<Context, Api<RawApi>>, database
     }
 }
 
+sendNotifications(telegramMainBot, getPrismaInstance()).catch(console.error)
+
 schedule.scheduleJob('*/5 * * * *', async () => {
     await sendNotifications(telegramMainBot, getPrismaInstance()).catch(console.error);
 });
