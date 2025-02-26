@@ -6,15 +6,15 @@ export const CALLBACKS_REPORT_KEYS = {
 };
 
 export const MENTAL_STATE_KEYS = {
-    PERFECT: "strong",
-    GOOD: "medium",
-    BAD: "low",
-    DEPRESSION: "clear"
+    PERFECT: "m_strong",
+    GOOD: "m_medium",
+    BAD: "m_low",
+    DEPRESSION: "m_clear"
 }
 
 export const HEADACHE_KEYS = {
-    STRONG: "strong",
-    MEDIUM: "medium",
-    LOW: "low",
-    CLEAR: "clear"
+    STRONG: "h_strong",
+    MEDIUM: "h_medium",
+    LOW: "h_low",
+    CLEAR: "h_clear"
 }

@@ -1,4 +1,4 @@
-import {Chat, HeadacheReport, Report} from "@prisma/client";
+import {Chat, HeadacheReport, MentalStateReport, OtherStateReport, Report} from "@prisma/client";
 import getPrismaInstance from "../postgres";
 
 
@@ -20,6 +20,8 @@ export async function getOrCreateReport(chatId: number): Promise<Report> {
         },
     });
 
+    console.log("=== Found or Creating Report ===", { chatId, report });
+
     if (!report) {
         report = await database.report.create({
             data: { chat_id: chatId },
@@ -39,8 +41,10 @@ export async function createHeadacheReport(report: Report, status: string): Prom
     });
 }
 
-export async function createMentalStateReport(report: Report, status: string): Promise<HeadacheReport> {
+export async function createMentalStateReport(report: Report, status: string): Promise<MentalStateReport> {
     const database = getPrismaInstance();
+    console.log("Creating MentalStateReport:", { report_id: report.id, status });
+
     return database.mentalStateReport.create({
         data: {
             report_id: report.id,
@@ -49,7 +53,7 @@ export async function createMentalStateReport(report: Report, status: string): P
     });
 }
 
-export async function createOtherStateReport(report: Report, status: string): Promise<HeadacheReport> {
+export async function createOtherStateReport(report: Report, status: string): Promise<OtherStateReport> {
     const database = getPrismaInstance();
     return database.otherStateReport.create({
         data: {
