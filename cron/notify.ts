@@ -13,8 +13,9 @@ export async function sendNotifications(bot: Bot<Context, Api<RawApi>>, database
     const todayStart = new Date(now.setHours(0, 0, 0, 0));
     const todayEnd = new Date(now.setHours(23, 59, 59, 999));
 
+    console.log("Запускаем рассылку")
     for (const chat of chats) {
-
+        console.log("Отсылаем в чат инфу. " + chat)
         const sixHours = 6 * 60 * 60 * 1000
         const chatCreationDate = new Date(chat.added_at).getTime()
         const isNewUser = chatCreationDate + sixHours <= chatCreationDate;
