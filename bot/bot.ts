@@ -9,12 +9,15 @@ import {headacheCallbackQuery} from "./services/headache/base.callbacks";
 import {headacheCallbackWrite} from "./services/headache/write.callbacks";
 import {mentalStateCallbackQuery} from "./services/mentalState/base.callbacks";
 import {mentalStateCallbackWrite} from "./services/mentalState/write.callbacks";
+import {analyticsService} from "./services/analytics.service";
 
 const telegramMainBot = new Bot(getEnv().TG_BOT_TOKEN);
 
 telegramMainBot.command("start", (ctx) => startService(ctx));
 telegramMainBot.command("report", (ctx) => reportService(ctx));
 telegramMainBot.command("other", (ctx) => otherService(ctx));
+
+telegramMainBot.command("analytics", (ctx) => analyticsService(ctx));
 
 // back to start screen
 telegramMainBot.callbackQuery(CALLBACKS_REPORT_KEYS.START_SCREEN, async (ctx) => {
